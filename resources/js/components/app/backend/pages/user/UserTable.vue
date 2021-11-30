@@ -3,7 +3,7 @@
     <div class="grid grid-cols-12 gap-6 mt-5">
 
         <div class="intro-y col-span-12 flex flex-wrap sm:flex-nowrap items-center mt-2">
-            <!-- <button class="btn btn-primary shadow-md mr-2">Add New Product</button> -->
+            <button class="btn btn-primary shadow-md mr-2">Add New Product</button>
 
             <div class="dropdown">
                     <button class="dropdown-toggle btn px-2 box text-gray-700 dark:text-gray-300" aria-expanded="false">
