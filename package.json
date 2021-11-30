@@ -25,6 +25,7 @@
     },
     "dependencies": {
         "vue-content-placeholders": "^0.2.1",
+        "vue-progressbar": "^0.7.5",
         "vue-router": "^3.5.3",
         "vuesax": "^4.0.1-alpha.25"
     }
