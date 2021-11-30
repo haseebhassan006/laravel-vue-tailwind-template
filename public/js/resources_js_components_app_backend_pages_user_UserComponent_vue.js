@@ -70,6 +70,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _UserTable_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./UserTable.vue */ "./resources/js/components/app/backend/pages/user/UserTable.vue");
 /* harmony import */ var _components_Breadcrumbs_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../components/Breadcrumbs.vue */ "./resources/js/components/app/backend/components/Breadcrumbs.vue");
 /* harmony import */ var _UserForm_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./UserForm.vue */ "./resources/js/components/app/backend/pages/user/UserForm.vue");
+/* harmony import */ var _components_Button_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../components/Button.vue */ "./resources/js/components/app/backend/components/Button.vue");
 //
 //
 //
@@ -128,6 +129,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+
 
 
 
@@ -135,16 +143,21 @@ __webpack_require__.r(__webpack_exports__);
   components: {
     Breadcrumb: _components_Breadcrumbs_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
     UserTable: _UserTable_vue__WEBPACK_IMPORTED_MODULE_0__["default"],
-    Form: _UserForm_vue__WEBPACK_IMPORTED_MODULE_2__["default"]
+    Form: _UserForm_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
+    ModalButton: _components_Button_vue__WEBPACK_IMPORTED_MODULE_3__["default"]
   },
   data: function data() {
     return {
-      loading: false
+      loading: false,
+      active_modal: false
     };
   },
   methods: {
     loadingStart: function loadingStart(value) {
       this.loading = value;
+    },
+    openModal: function openModal(val) {
+      return this.active_modal = val;
     },
     getUser: function getUser() {
       this.loading = true;
@@ -375,7 +388,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/* .vs-button__content {\n    width: 130px;\n    height: 49px;\n} */\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/* .vs-button__content {\n    width: 130px;\n    height: 49px;\n} */\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -882,7 +895,32 @@ var render = function() {
         "div",
         { staticClass: "card-body" },
         [
-          _vm._m(0),
+          _c(
+            "div",
+            {
+              staticClass:
+                "intro-y col-span-12 flex flex-wrap sm:flex-nowrap items-center mt-2"
+            },
+            [
+              _c(
+                "ModalButton",
+                {
+                  attrs: { icon: "fas fa-plus", label: "Add User" },
+                  on: {
+                    activemodal: function($event) {
+                      return _vm.openModal($event)
+                    }
+                  }
+                },
+                [
+                  _vm._v(
+                    "\n                        Add User\n                    "
+                  )
+                ]
+              )
+            ],
+            1
+          ),
           _vm._v(" "),
           _vm.loading
             ? _c(
@@ -913,275 +951,110 @@ var render = function() {
         1
       ),
       _vm._v(" "),
-      _vm._m(1)
+      _c(
+        "vs-dialog",
+        {
+          scopedSlots: _vm._u([
+            {
+              key: "header",
+              fn: function() {
+                return [
+                  _c("h4", { staticClass: "not-margin" }, [
+                    _vm._v("\n            Welcome to "),
+                    _c("b", [_vm._v("Vuesax")])
+                  ])
+                ]
+              },
+              proxy: true
+            },
+            {
+              key: "footer",
+              fn: function() {
+                return [
+                  _c(
+                    "div",
+                    { staticClass: "footer-dialog" },
+                    [
+                      _c("vs-button", { attrs: { block: "" } }, [
+                        _vm._v("\n              Sign In\n            ")
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "new" }, [
+                        _vm._v("\n              New Here? "),
+                        _c("a", { attrs: { href: "#" } }, [
+                          _vm._v("Create New Account")
+                        ])
+                      ])
+                    ],
+                    1
+                  )
+                ]
+              },
+              proxy: true
+            }
+          ]),
+          model: {
+            value: _vm.active_modal,
+            callback: function($$v) {
+              _vm.active_modal = $$v
+            },
+            expression: "active_modal"
+          }
+        },
+        [
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "con-form" },
+            [
+              _c("vs-input", {
+                attrs: { placeholder: "Email" },
+                scopedSlots: _vm._u([
+                  {
+                    key: "icon",
+                    fn: function() {
+                      return undefined
+                    },
+                    proxy: true
+                  }
+                ])
+              }),
+              _vm._v(" "),
+              _c("vs-input", {
+                attrs: { type: "password", placeholder: "Password" },
+                scopedSlots: _vm._u([
+                  {
+                    key: "icon",
+                    fn: function() {
+                      return [_c("i", { staticClass: "bx bxs-lock" })]
+                    },
+                    proxy: true
+                  }
+                ])
+              }),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "flex" },
+                [
+                  _c("vs-checkbox", [_vm._v("Remember me")]),
+                  _vm._v(" "),
+                  _c("a", { attrs: { href: "#" } }, [
+                    _vm._v("Forgot Password?")
+                  ])
+                ],
+                1
+              )
+            ],
+            1
+          )
+        ]
+      )
     ],
     1
   )
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass:
-          "intro-y col-span-12 flex flex-wrap sm:flex-nowrap items-center mt-2"
-      },
-      [
-        _c(
-          "button",
-          {
-            staticClass: "btn btn-primary",
-            attrs: {
-              href: "javascript:;",
-              "data-toggle": "modal",
-              "data-target": "#header-footer-modal-preview"
-            }
-          },
-          [_vm._v("\n                       Add User\n                   ")]
-        )
-      ]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass: "modal",
-        attrs: {
-          id: "header-footer-modal-preview",
-          tabindex: "-1",
-          "aria-hidden": "true"
-        }
-      },
-      [
-        _c("div", { staticClass: "modal-dialog" }, [
-          _c("div", { staticClass: "modal-content" }, [
-            _c("div", { staticClass: "modal-header" }, [
-              _c("h2", { staticClass: "font-medium text-base mr-auto" }, [
-                _vm._v("Broadcast Message")
-              ]),
-              _vm._v(" "),
-              _c(
-                "button",
-                { staticClass: "btn btn-outline-secondary hidden sm:flex" },
-                [
-                  _c("i", {
-                    staticClass: "w-4 h-4 mr-2",
-                    attrs: { "data-feather": "file" }
-                  }),
-                  _vm._v(" Download Docs ")
-                ]
-              ),
-              _vm._v(" "),
-              _c("div", { staticClass: "dropdown sm:hidden" }, [
-                _c(
-                  "a",
-                  {
-                    staticClass: "dropdown-toggle w-5 h-5 block",
-                    attrs: { href: "javascript:;", "aria-expanded": "false" }
-                  },
-                  [
-                    _c("i", {
-                      staticClass: "w-5 h-5 text-gray-600 dark:text-gray-600",
-                      attrs: { "data-feather": "more-horizontal" }
-                    })
-                  ]
-                ),
-                _vm._v(" "),
-                _c("div", { staticClass: "dropdown-menu w-40" }, [
-                  _c(
-                    "div",
-                    {
-                      staticClass:
-                        "dropdown-menu__content box dark:bg-dark-1 p-2"
-                    },
-                    [
-                      _c(
-                        "a",
-                        {
-                          staticClass:
-                            "flex items-center p-2 transition duration-300 ease-in-out bg-white dark:bg-dark-1 hover:bg-gray-200 dark:hover:bg-dark-2 rounded-md",
-                          attrs: { href: "javascript:;" }
-                        },
-                        [
-                          _c("i", {
-                            staticClass: "w-4 h-4 mr-2",
-                            attrs: { "data-feather": "file" }
-                          }),
-                          _vm._v(" Download Docs ")
-                        ]
-                      )
-                    ]
-                  )
-                ])
-              ])
-            ]),
-            _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "modal-body grid grid-cols-12 gap-4 gap-y-3" },
-              [
-                _c("div", { staticClass: "col-span-12 sm:col-span-6" }, [
-                  _c(
-                    "label",
-                    {
-                      staticClass: "form-label",
-                      attrs: { for: "modal-form-1" }
-                    },
-                    [_vm._v("From")]
-                  ),
-                  _vm._v(" "),
-                  _c("input", {
-                    staticClass: "form-control",
-                    attrs: {
-                      id: "modal-form-1",
-                      type: "text",
-                      placeholder: "example@gmail.com"
-                    }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "col-span-12 sm:col-span-6" }, [
-                  _c(
-                    "label",
-                    {
-                      staticClass: "form-label",
-                      attrs: { for: "modal-form-2" }
-                    },
-                    [_vm._v("To")]
-                  ),
-                  _vm._v(" "),
-                  _c("input", {
-                    staticClass: "form-control",
-                    attrs: {
-                      id: "modal-form-2",
-                      type: "text",
-                      placeholder: "example@gmail.com"
-                    }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "col-span-12 sm:col-span-6" }, [
-                  _c(
-                    "label",
-                    {
-                      staticClass: "form-label",
-                      attrs: { for: "modal-form-3" }
-                    },
-                    [_vm._v("Subject")]
-                  ),
-                  _vm._v(" "),
-                  _c("input", {
-                    staticClass: "form-control",
-                    attrs: {
-                      id: "modal-form-3",
-                      type: "text",
-                      placeholder: "Important Meeting"
-                    }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "col-span-12 sm:col-span-6" }, [
-                  _c(
-                    "label",
-                    {
-                      staticClass: "form-label",
-                      attrs: { for: "modal-form-4" }
-                    },
-                    [_vm._v("Has the Words")]
-                  ),
-                  _vm._v(" "),
-                  _c("input", {
-                    staticClass: "form-control",
-                    attrs: {
-                      id: "modal-form-4",
-                      type: "text",
-                      placeholder: "Job, Work, Documentation"
-                    }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "col-span-12 sm:col-span-6" }, [
-                  _c(
-                    "label",
-                    {
-                      staticClass: "form-label",
-                      attrs: { for: "modal-form-5" }
-                    },
-                    [_vm._v("Doesn't Have")]
-                  ),
-                  _vm._v(" "),
-                  _c("input", {
-                    staticClass: "form-control",
-                    attrs: {
-                      id: "modal-form-5",
-                      type: "text",
-                      placeholder: "Job, Work, Documentation"
-                    }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "col-span-12 sm:col-span-6" }, [
-                  _c(
-                    "label",
-                    {
-                      staticClass: "form-label",
-                      attrs: { for: "modal-form-6" }
-                    },
-                    [_vm._v("Size")]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "select",
-                    {
-                      staticClass: "form-select",
-                      attrs: { id: "modal-form-6" }
-                    },
-                    [
-                      _c("option", [_vm._v("10")]),
-                      _vm._v(" "),
-                      _c("option", [_vm._v("25")]),
-                      _vm._v(" "),
-                      _c("option", [_vm._v("35")]),
-                      _vm._v(" "),
-                      _c("option", [_vm._v("50")])
-                    ]
-                  )
-                ])
-              ]
-            ),
-            _vm._v(" "),
-            _c("div", { staticClass: "modal-footer text-right" }, [
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-outline-secondary w-20 mr-1",
-                  attrs: { type: "button", "data-dismiss": "modal" }
-                },
-                [_vm._v("Cancel")]
-              ),
-              _vm._v(" "),
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-primary w-20",
-                  attrs: { type: "button" }
-                },
-                [_vm._v("Send")]
-              )
-            ])
-          ])
-        ])
-      ]
-    )
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 

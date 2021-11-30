@@ -5,9 +5,9 @@
 
             <div class="card-body">
                  <div class="intro-y col-span-12 flex flex-wrap sm:flex-nowrap items-center mt-2">
-                    <button href="javascript:;" data-toggle="modal" data-target="#header-footer-modal-preview" class="btn btn-primary">
+                    <ModalButton icon="fas fa-plus"  label="Add User"  v-on:activemodal="openModal($event)">
                         Add User
-                    </button>
+                    </ModalButton>
                 </div>
                 <content-placeholders v-if="loading">
                     <content-placeholders-heading :img="true"/>
@@ -22,37 +22,43 @@
                 <user-table></user-table>
             </div>
 
- <div id="header-footer-modal-preview" class="modal" tabindex="-1" aria-hidden="true">
-     <div class="modal-dialog">
-         <div class="modal-content">
-             <!-- BEGIN: Modal Header -->
-             <div class="modal-header">
-                 <h2 class="font-medium text-base mr-auto">Broadcast Message</h2> <button class="btn btn-outline-secondary hidden sm:flex"> <i data-feather="file" class="w-4 h-4 mr-2"></i> Download Docs </button>
-                 <div class="dropdown sm:hidden"> <a class="dropdown-toggle w-5 h-5 block" href="javascript:;" aria-expanded="false"> <i data-feather="more-horizontal" class="w-5 h-5 text-gray-600 dark:text-gray-600"></i> </a>
-                     <div class="dropdown-menu w-40">
-                         <div class="dropdown-menu__content box dark:bg-dark-1 p-2"> <a href="javascript:;" class="flex items-center p-2 transition duration-300 ease-in-out bg-white dark:bg-dark-1 hover:bg-gray-200 dark:hover:bg-dark-2 rounded-md"> <i data-feather="file" class="w-4 h-4 mr-2"></i> Download Docs </a> </div>
-                     </div>
-                 </div>
-             </div> <!-- END: Modal Header -->
-             <!-- BEGIN: Modal Body -->
-             <div class="modal-body grid grid-cols-12 gap-4 gap-y-3">
-                 <div class="col-span-12 sm:col-span-6"> <label for="modal-form-1" class="form-label">From</label> <input id="modal-form-1" type="text" class="form-control" placeholder="example@gmail.com"> </div>
-                 <div class="col-span-12 sm:col-span-6"> <label for="modal-form-2" class="form-label">To</label> <input id="modal-form-2" type="text" class="form-control" placeholder="example@gmail.com"> </div>
-                 <div class="col-span-12 sm:col-span-6"> <label for="modal-form-3" class="form-label">Subject</label> <input id="modal-form-3" type="text" class="form-control" placeholder="Important Meeting"> </div>
-                 <div class="col-span-12 sm:col-span-6"> <label for="modal-form-4" class="form-label">Has the Words</label> <input id="modal-form-4" type="text" class="form-control" placeholder="Job, Work, Documentation"> </div>
-                 <div class="col-span-12 sm:col-span-6"> <label for="modal-form-5" class="form-label">Doesn't Have</label> <input id="modal-form-5" type="text" class="form-control" placeholder="Job, Work, Documentation"> </div>
-                 <div class="col-span-12 sm:col-span-6"> <label for="modal-form-6" class="form-label">Size</label> <select id="modal-form-6" class="form-select">
-                         <option>10</option>
-                         <option>25</option>
-                         <option>35</option>
-                         <option>50</option>
-                     </select> </div>
-             </div> <!-- END: Modal Body -->
-             <!-- BEGIN: Modal Footer -->
-             <div class="modal-footer text-right"> <button type="button" data-dismiss="modal" class="btn btn-outline-secondary w-20 mr-1">Cancel</button> <button type="button" class="btn btn-primary w-20">Send</button> </div> <!-- END: Modal Footer -->
-         </div>
-     </div>
- </div>
+<vs-dialog v-model="active_modal">
+        <template #header>
+          <h4 class="not-margin">
+            Welcome to <b>Vuesax</b>
+          </h4>
+        </template>
+
+
+        <div class="con-form">
+          <vs-input placeholder="Email">
+            <template #icon>
+             
+            </template>
+          </vs-input>
+          <vs-input type="password" placeholder="Password">
+            <template #icon>
+              <i class='bx bxs-lock'></i>
+            </template>
+          </vs-input>
+          <div class="flex">
+            <vs-checkbox >Remember me</vs-checkbox>
+            <a href="#">Forgot Password?</a>
+          </div>
+        </div>
+
+        <template #footer>
+          <div class="footer-dialog">
+            <vs-button block>
+              Sign In
+            </vs-button>
+
+            <div class="new">
+              New Here? <a href="#">Create New Account</a>
+            </div>
+          </div>
+        </template>
+      </vs-dialog>
 
    </div>
 </template>
@@ -60,21 +66,27 @@
 import UserTable from './UserTable.vue'
 import Breadcrumb from '../../components/Breadcrumbs.vue'
 import Form from './UserForm.vue'
+import ModalButton from '../../components/Button.vue'
  export  default{
     components:{
         Breadcrumb,
         UserTable,
         Form,
+        ModalButton
     },
     data(){
         return{
-             loading:false,
+            loading:false,
+            active_modal:false,
         }
     },
     methods:{
         loadingStart(value) {
             this.loading = value;
         },
+        openModal(val){
+             return this.active_modal=val;
+            },
         getUser(){
              this.loading=true;
         }

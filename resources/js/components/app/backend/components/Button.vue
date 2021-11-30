@@ -1,6 +1,6 @@
 <template>
   <div>
-      <vs-button  :color="this.$root.primary_color"  @click="activemodal">
+      <vs-button   :color="this.$root.primary_color"  @click="activemodal">
         <i :class="icon" style="margin-right: 10px;" v-if="icon"></i>
          {{label}}
       </vs-button>
@@ -20,6 +20,7 @@ export default {
     }
 }
 </script>
+
 
 <style>
 /* .vs-button__content {
