@@ -912,11 +912,7 @@ var render = function() {
                     }
                   }
                 },
-                [
-                  _vm._v(
-                    "\n                        Add User\n                    "
-                  )
-                ]
+                [_vm._v("\n                      Add User\n                  ")]
               )
             ],
             1
@@ -954,13 +950,14 @@ var render = function() {
       _c(
         "vs-dialog",
         {
+          attrs: { "overflow-hidden": "", "full-screen": "" },
           scopedSlots: _vm._u([
             {
               key: "header",
               fn: function() {
                 return [
                   _c("h4", { staticClass: "not-margin" }, [
-                    _vm._v("\n            Welcome to "),
+                    _vm._v("\n          Welcome to "),
                     _c("b", [_vm._v("Vuesax")])
                   ])
                 ]
@@ -976,11 +973,11 @@ var render = function() {
                     { staticClass: "footer-dialog" },
                     [
                       _c("vs-button", { attrs: { block: "" } }, [
-                        _vm._v("\n              Sign In\n            ")
+                        _vm._v("\n            Sign In\n          ")
                       ]),
                       _vm._v(" "),
                       _c("div", { staticClass: "new" }, [
-                        _vm._v("\n              New Here? "),
+                        _vm._v("\n            New Here? "),
                         _c("a", { attrs: { href: "#" } }, [
                           _vm._v("Create New Account")
                         ])
@@ -1013,7 +1010,7 @@ var render = function() {
                   {
                     key: "icon",
                     fn: function() {
-                      return undefined
+                      return [_vm._v("\n            @\n          ")]
                     },
                     proxy: true
                   }

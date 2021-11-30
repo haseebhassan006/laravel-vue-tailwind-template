@@ -2269,12 +2269,17 @@ function setComponent(path_file) {
   return __webpack_require__("./resources/js lazy recursive ^.*$")("" + route_path);
 }
 
-var routes = [// { path: "*", component: () => setComponent("error/404") },
-// {
-//     path: "/",
-//     redirect: { path: '/' }
-// },
-{
+var routes = [{
+  path: "*",
+  component: function component() {
+    return setComponent("error/404");
+  }
+}, {
+  path: "/",
+  redirect: {
+    path: '/'
+  }
+}, {
   path: "/home",
   component: function component() {
     return setComponent("Home");

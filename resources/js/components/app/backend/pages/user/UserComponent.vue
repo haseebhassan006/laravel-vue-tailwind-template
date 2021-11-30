@@ -22,7 +22,7 @@
                 <user-table></user-table>
             </div>
 
-<vs-dialog v-model="active_modal">
+  <vs-dialog overflow-hidden full-screen v-model="active_modal">
         <template #header>
           <h4 class="not-margin">
             Welcome to <b>Vuesax</b>
@@ -33,10 +33,10 @@
         <div class="con-form">
           <vs-input placeholder="Email">
             <template #icon>
-             
+              @
             </template>
           </vs-input>
-          <vs-input type="password" placeholder="Password">
+          <vs-input type="password"  placeholder="Password">
             <template #icon>
               <i class='bx bxs-lock'></i>
             </template>

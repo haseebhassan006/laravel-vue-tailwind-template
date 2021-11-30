@@ -11,11 +11,11 @@ function setComponent(path_file) {
     return import ("" + route_path);
 }
 const routes = [
-    // { path: "*", component: () => setComponent("error/404") },
-    // {
-    //     path: "/",
-    //     redirect: { path: '/' }
-    // },
+    { path: "*", component: () => setComponent("error/404") },
+    {
+        path: "/",
+        redirect: { path: '/' }
+    },
     {
        path: "/home",
        component: () => setComponent("Home"),
@@ -26,8 +26,6 @@ const routes = [
         component: () => setComponent("user/User"),
         name: "user",
     },
-    
-
 ];
 
 const router = new VueRouter({
